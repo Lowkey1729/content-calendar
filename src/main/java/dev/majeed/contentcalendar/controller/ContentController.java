@@ -39,7 +39,7 @@ public class ContentController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/update/{id}")
     public void update(@RequestBody Content content, @PathVariable Integer id) {
-        if (contentCollectionRepository.existsById(id)) {
+        if (! contentCollectionRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Content not found");
         }
 
@@ -49,7 +49,7 @@ public class ContentController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Integer id) {
-        if (contentCollectionRepository.existsById(id)) {
+        if (! contentCollectionRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Content not found");
         }
 
