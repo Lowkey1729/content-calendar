@@ -1,14 +1,11 @@
 package dev.majeed.contentcalendar.controller;
 
 import dev.majeed.contentcalendar.model.Content;
-import dev.majeed.contentcalendar.model.enums.Status;
-import dev.majeed.contentcalendar.model.enums.Type;
 import dev.majeed.contentcalendar.repository.ContentCollectionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +19,7 @@ public class ContentController {
         this.contentCollectionRepository = contentCollectionRepository;
     }
 
-   @GetMapping("")
+    @GetMapping("")
     public List<Content> findAll() {
         return contentCollectionRepository.findAll();
     }
@@ -38,12 +35,23 @@ public class ContentController {
         contentCollectionRepository.save(content);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/update/{id}")
     public void update(@RequestBody Content content, @PathVariable Integer id) {
-        if (! contentCollectionRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (contentCollectionRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Content not found");
         }
 
         contentCollectionRepository.save(content);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Integer id) {
+        if (contentCollectionRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Content not found");
+        }
+
+        contentCollectionRepository.delete(id);
     }
 }

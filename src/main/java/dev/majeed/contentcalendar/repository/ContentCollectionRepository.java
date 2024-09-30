@@ -50,4 +50,8 @@ public class ContentCollectionRepository {
     public boolean existsById(Integer id) {
         return contents.stream().filter(c -> c.id().equals(id)).count() == 1;
     }
+
+    public void delete(Integer id) {
+        contents.removeIf(c -> c.id().equals(id));
+    }
 }
