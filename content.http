@@ -1,0 +1,20 @@
+### Get All Contents
+GET http://localhost:8080/api/contents
+
+### Get a content by ID
+GET http://localhost:8080/api/{id}
+
+### Create a new content
+POST http://localhost:8080/api/contents/create
+Content-Type: application/json
+
+{
+  "id": 4,
+  "title": "My fourth blog post",
+  "desc" : "My fourth blog post",
+  "status": "COMPLETED",
+  "contentType": "VIDEO",
+  "createdAt": "2023-02-13T10:25:02",
+  "updatedAt": null,
+  "url": ""
+}

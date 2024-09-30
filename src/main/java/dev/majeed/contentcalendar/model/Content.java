@@ -4,6 +4,7 @@ import dev.majeed.contentcalendar.model.enums.Status;
 import dev.majeed.contentcalendar.model.enums.Type;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 public record Content(
         Integer id,
@@ -12,7 +13,7 @@ public record Content(
         Status status,
         Type contentType,
         LocalDateTime createdAt,
-        LocalDateTime updatedAt,
+        Optional<LocalDateTime> updatedAt,
         String url
 ) {
 }
