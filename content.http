@@ -10,12 +10,12 @@ Content-Type: application/json
 
 {
   "id": 4,
-  "title": "My fourth blog post",
+  "title": "jol",
   "desc" : "My fourth blog post",
   "status": "COMPLETED",
   "contentType": "VIDEO",
   "createdAt": "2023-02-13T10:25:02",
-  "updatedAt": null,
+  "updatedAt": "2023-02-13T10:25:02",
   "url": ""
 }
 
