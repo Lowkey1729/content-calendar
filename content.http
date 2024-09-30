@@ -18,3 +18,19 @@ Content-Type: application/json
   "updatedAt": null,
   "url": ""
 }
+
+
+### Update an exisitng content
+PUT http://localhost:8080/api/contents/update/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Get me my funds",
+  "desc" : "My fourth blog post",
+  "status": "COMPLETED",
+  "contentType": "VIDEO",
+  "createdAt": "2023-02-13T10:25:02",
+  "updatedAt": null,
+  "url": ""
+}

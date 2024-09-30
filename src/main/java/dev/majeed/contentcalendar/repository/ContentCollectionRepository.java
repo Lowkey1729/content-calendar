@@ -47,4 +47,7 @@ public class ContentCollectionRepository {
     }
 
 
+    public boolean existsById(Integer id) {
+        return contents.stream().filter(c -> c.id().equals(id)).count() == 1;
+    }
 }

@@ -6,6 +6,7 @@ import dev.majeed.contentcalendar.model.enums.Type;
 import dev.majeed.contentcalendar.repository.ContentCollectionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,6 +35,15 @@ public class ContentController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     public void create(@RequestBody Content content) {
+        contentCollectionRepository.save(content);
+    }
+
+    @PutMapping("/update/{id}")
+    public void update(@RequestBody Content content, @PathVariable Integer id) {
+        if (! contentCollectionRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
         contentCollectionRepository.save(content);
     }
 }
